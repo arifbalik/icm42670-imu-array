@@ -1,0 +1,98 @@
+kibot:
+  version: 1
+
+global:
+  filters:
+    - number: 145
+
+preflight:  
+  drc: true
+  erc: true
+  update_qr: false
+  update_xml: false
+  fill_zones: true
+  update_stackup: true
+  check_zone_fills: true
+  update_pcb_characteristics: true
+  
+
+outputs:
+  - name: 'sch'
+    comment: 'SCH'
+    type: 'pdf_sch_print'
+    dir: '.'
+
+  - name: 'bom'
+    comment: 'BOM'
+    type: 'bom'
+    dir: '.'
+    options:
+      format: 'CSV'
+      csv: 
+        quote_all: true
+        separator: ';'
+      group_fields: [Value]
+      columns:
+        - Reference
+        - Quantity Per PCB
+        - Value
+        - Footprint
+
+  - name: 'ibom'
+    comment: 'Interactive BOM'
+    type: 'ibom'
+    dir: '.'
+
+  - name: 'position'
+    comment: 'Pick/Place'
+    type: 'position'
+    dir: '.'
+    options:
+      output: "%f-pos%v.csv"
+      separate_files_for_front_and_back: false
+      right_digits: 2
+      format: 'CSV'
+      quote_all: true
+      separator: ';'
+
+  - name: 'gerber'
+    comment: 'Single PCB Gerber'
+    type: 'gerber'
+    dir: 'gerbers'
+    layers: all
+ 
+  - name: 'gerber-drill'
+    comment: 'Drill Gerber'
+    type: 'gerb_drill'
+    dir: 'gerbers'
+
+  - name: 'Zip'
+    comment: 'Single PCB GERBER'
+    type: 'compress'
+    dir: .
+    options:
+      output: "%f-single-pcb-gerbers.zip"
+      files:
+        - from_output: 'gerber'
+          dest: "."
+        - from_output: gerber-drill
+          dest: "."
+
+  - name: 'panel'
+    comment: 'Panelizing'
+    type: 'panelize'
+    dir: 'panel/project'
+    options:
+      create_preview: true
+      configs: 'panel_configs.json'
+
+  - name: 'kikit_present'
+    comment: 'Panel GERBER'
+    type: 'kikit_present'
+    dir: 'panel'
+    options:
+      boards:
+        mode: "external"
+        external_config: "config.kibot.panel.yml"
+        pcb_from_output: "panel"
+      description: 'README.md'

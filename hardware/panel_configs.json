@@ -1,0 +1,31 @@
+{
+    "layout": {
+        "type": "grid",
+        "space": "4mm",
+        "rows": 2,
+        "cols": 2
+    },
+    "tabs": {
+        "type": "fixed",
+        "hwidth": "15mm",
+        "vwidth": "15mm"
+    },
+    "cuts": {
+        "type": "vcuts"
+    },
+    "framing": {
+        "type": "frame",
+        "width": "5mm"
+    },
+    "fiducials": {
+        "type": "4fid",
+        "hoffset": "5mm",
+        "voffset": "2.5mm",
+        "coppersize": "2mm",
+        "opening": "1mm"
+    },
+    
+    "post": {
+        "type": "auto"
+    }
+}
