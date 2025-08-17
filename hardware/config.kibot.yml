@@ -4,6 +4,8 @@ kibot:
 global:
   filters:
     - number: 145
+    - number: 143
+    - number: 98
 
 preflight:  
   drc: true
@@ -54,6 +56,15 @@ outputs:
       format: 'CSV'
       quote_all: true
       separator: ';'
+
+  - name: 'render_3d'
+    comment: 'Front View 3D Render'
+    type: 'render_3d'
+    dir: '../assets'
+    options:
+      output: "render-top.png"
+      transparent_background: true
+      dpi: 1200
 
   - name: 'gerber'
     comment: 'Single PCB Gerber'
