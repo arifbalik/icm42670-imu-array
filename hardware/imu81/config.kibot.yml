@@ -4,19 +4,15 @@ kibot:
 global:
   filters:
     - number: 145
-    - number: 143
-    - number: 98
 
 preflight:  
-  drc: true
+  drc: false
   erc: true
   update_qr: false
   update_xml: false
   fill_zones: true
-  update_stackup: true
   check_zone_fills: true
   update_pcb_characteristics: true
-  
 
 outputs:
   - name: 'sch'
@@ -62,9 +58,8 @@ outputs:
     type: 'render_3d'
     dir: '../assets'
     options:
-      output: "render-top.png"
+      output: "%f-render-top.png"
       transparent_background: true
-      dpi: 1200
 
   - name: 'gerber'
     comment: 'Single PCB Gerber'

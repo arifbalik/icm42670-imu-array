@@ -1138,7 +1138,7 @@
 		(uuid "4f59f413-a607-4273-bbff-6af1e385fdab")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/components/icm42670/LGA14_2_5X3X0_76_IVS.step"
+	(model "${KIPRJMOD}/../components/icm42670/LGA14_2_5X3X0_76_IVS.step"
 		(offset
 			(xyz 0 0 0)
 		)

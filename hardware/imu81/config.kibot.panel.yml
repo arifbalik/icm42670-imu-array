@@ -1,0 +1,44 @@
+kibot:
+  version: 1
+  
+outputs:
+  - name: 'pcbdraw-front'
+    comment: 'Front View'
+    type: 'pcbdraw'
+    dir: 'front'
+    options:
+      dpi: 1200
+      format: 'svg'
+
+  - name: 'pcbdraw-back'
+    comment: 'Back View'
+    type: 'pcbdraw'
+    dir: 'back'
+    options:
+      bottom: true
+      dpi: 1200
+      format: 'svg'
+
+  - name: 'gerb_drill'
+    comment: 'Drill'
+    type: 'gerb_drill'
+    dir: 'gerber'
+
+  - name: 'gerber'
+    comment: 'Gerber'
+    type: 'gerber'
+    dir: 'gerber'
+    layers: all
+
+  - name: 'fab'
+    comment: 'Generates a compressed file containing production files.'
+    type: 'compress'
+    dir: gerbers
+    options:
+      output: "production-files.zip"
+      files:
+        - from_output: 'gerber'
+          dest: "."
+        - from_output: gerb_drill
+          dest: "."
+      

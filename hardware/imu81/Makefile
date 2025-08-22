@@ -1,15 +1,15 @@
-CWD = $(shell pwd)
-PROJECT_NAME = icm42670-imu-array
+CWD = $(shell pwd)/..
+PROJECT_NAME = imu81
 MOUNT_PATH = /workspace
 IMAGE = ghcr.io/inti-cmnb/kicad_auto_full:dev_k9
 
 lint:
 	MSYS_NO_PATHCONV=1 docker run --rm -v "$(CWD):$(MOUNT_PATH)" $(IMAGE) /bin/bash -c "\
-		cd $(MOUNT_PATH) && \
+		cd $(MOUNT_PATH)/$(PROJECT_NAME) && \
 		kicad-cli sch erc --exit-code-violations $(PROJECT_NAME).kicad_sch || \
 		(cat $(PROJECT_NAME)-erc.rpt && exit 1)"
 	MSYS_NO_PATHCONV=1 docker run --rm -v "$(CWD):$(MOUNT_PATH)" $(IMAGE) /bin/bash -c "\
-		cd $(MOUNT_PATH) && \
+		cd $(MOUNT_PATH)/$(PROJECT_NAME) && \
 		kicad-cli pcb drc --exit-code-violations $(PROJECT_NAME).kicad_pcb || \
 		(cat $(PROJECT_NAME)-drc.rpt && exit 1)"
 
@@ -18,7 +18,7 @@ build:
 		-v "$(CWD):$(MOUNT_PATH)" \
 		--workdir="$(MOUNT_PATH)" \
 		$(IMAGE) \
-		/bin/bash -c "cd $(MOUNT_PATH); \
+		/bin/bash -c "cd $(MOUNT_PATH)/$(PROJECT_NAME); \
 		kibot -d $(MOUNT_PATH)/outputs/ && rm -rf $(MOUNT_PATH)/outputs/gerbers"
 
 test:

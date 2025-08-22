@@ -351,7 +351,7 @@
 		(uuid "51272652-f398-4351-a5c5-e93eefc2110b")
 	)
 	(embedded_fonts no)
-	(model "${KIPRJMOD}/components/usb/10118192-0001LF.step"
+	(model "${KIPRJMOD}/../components/usb/10118192-0001LF.step"
 		(offset
 			(xyz 0 -3 0)
 		)
