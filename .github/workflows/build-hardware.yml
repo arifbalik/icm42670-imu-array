@@ -61,7 +61,7 @@ jobs:
       with:
         name: ${{ matrix.project }}-outputs
         path: hardware/outputs/
-        retention-days: 30
+        retention-days: 7
         
     - name: Upload ${{ matrix.project }} gerbers
       uses: actions/upload-artifact@v4
@@ -71,7 +71,7 @@ jobs:
         path: |
           hardware/outputs/*${{ matrix.project }}*gerbers*.zip
           hardware/outputs/*gerbers*.zip
-        retention-days: 90
+        retention-days: 7
       continue-on-error: true
 
   summary:
