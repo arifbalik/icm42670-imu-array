@@ -1,7 +1,7 @@
 # IMU81 Array Module
 
 <div align="center">
-<img src="../assets/imu81-render-top.png" alt="IMU81 Array Module" width="400" style="transform: rotate(90deg);">
+<img src="../assets/imu81-render-top.png" alt="IMU81 Array Module" width="500" style="transform: rotate(90deg);">
 </div>
 
 ## Overview
