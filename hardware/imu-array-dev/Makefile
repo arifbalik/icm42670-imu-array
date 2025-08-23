@@ -3,16 +3,6 @@ PROJECT_NAME = imu-array-dev
 MOUNT_PATH = /workspace
 IMAGE = ghcr.io/inti-cmnb/kicad_auto_full:dev_k9
 
-lint:
-	MSYS_NO_PATHCONV=1 docker run --rm -v "$(CWD):$(MOUNT_PATH)" $(IMAGE) /bin/bash -c "\
-		cd $(MOUNT_PATH)/$(PROJECT_NAME) && \
-		kicad-cli sch erc --exit-code-violations $(PROJECT_NAME).kicad_sch || \
-		(cat $(PROJECT_NAME)-erc.rpt && exit 1)"
-	MSYS_NO_PATHCONV=1 docker run --rm -v "$(CWD):$(MOUNT_PATH)" $(IMAGE) /bin/bash -c "\
-		cd $(MOUNT_PATH)/$(PROJECT_NAME) && \
-		kicad-cli pcb drc --exit-code-violations $(PROJECT_NAME).kicad_pcb || \
-		(cat $(PROJECT_NAME)-drc.rpt && exit 1)"
-
 build:
 	MSYS_NO_PATHCONV=1 docker run --rm \
 		-v "$(CWD):$(MOUNT_PATH)" \

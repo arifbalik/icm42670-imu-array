@@ -28,7 +28,18 @@ outputs:
     comment: 'Gerber'
     type: 'gerber'
     dir: 'gerber'
-    layers: all
+    layers: 
+      - 'F.Cu'
+      - 'In1.Cu'
+      - 'In2.Cu'
+      - 'B.Cu'
+      - 'F.Paste'
+      - 'B.Paste'
+      - 'B.SilkS'
+      - 'F.Mask'
+      - 'B.Mask'
+      - 'F.Fab'
+      - 'Edge.Cuts'
 
   - name: 'fab'
     comment: 'Generates a compressed file containing production files.'

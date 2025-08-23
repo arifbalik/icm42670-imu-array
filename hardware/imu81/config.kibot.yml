@@ -60,12 +60,27 @@ outputs:
     options:
       output: "%f-render-top.png"
       transparent_background: true
+      layers: 
+        - 'F.Cu'
+        - 'F.Mask'
+        - 'Edge.Cuts'
 
   - name: 'gerber'
     comment: 'Single PCB Gerber'
     type: 'gerber'
     dir: 'gerbers'
-    layers: all
+    layers: 
+      - 'F.Cu'
+      - 'In1.Cu'
+      - 'In2.Cu'
+      - 'B.Cu'
+      - 'F.Paste'
+      - 'B.Paste'
+      - 'B.SilkS'
+      - 'F.Mask'
+      - 'B.Mask'
+      - 'F.Fab'
+      - 'Edge.Cuts'
  
   - name: 'gerber-drill'
     comment: 'Drill Gerber'

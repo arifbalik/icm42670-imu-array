@@ -2,13 +2,13 @@
     "layout": {
         "type": "grid",
         "space": "4mm",
-        "rows": 2,
-        "cols": 2
+        "rows": 4,
+        "cols": 4
     },
     "tabs": {
         "type": "fixed",
-        "hwidth": "15mm",
-        "vwidth": "15mm"
+        "hwidth": "16mm",
+        "vwidth": "16mm"
     },
     "cuts": {
         "type": "vcuts"
@@ -24,7 +24,14 @@
         "coppersize": "2mm",
         "opening": "1mm"
     },
-    
+    "text": {
+        "type": "simple",
+        "text": "IMU81 - Rev A",
+        "anchor": "mt",
+        "voffset": "2.5mm",
+        "hjustify": "center",
+        "vjustify": "center"
+    },
     "post": {
         "type": "auto"
     }
